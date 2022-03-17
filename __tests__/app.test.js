@@ -22,4 +22,11 @@ describe('hand-of-resources routes', () => {
 
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
+
+  it('gets a list of avatar characters characters', async () => {
+    const expected = await Avatar.findAll();
+    const res = await request(app).get('/api/v1/avatar');
+
+    expect(res.body).toEqual(expected);
+  });
 });
