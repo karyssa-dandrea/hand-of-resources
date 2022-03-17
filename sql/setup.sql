@@ -6,11 +6,11 @@ DROP TABLE IF EXISTS avatar;
 CREATE TABLE avatar (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
-    abilities TEXT NOT NULL,
+    abilities TEXT NOT NULL
 );
 
 INSERT INTO
-avatar (name, abilities, ethnicity)
+avatar (name, abilities)
 VALUES
 ('Zuko', 'firebending'),
-('Katara', 'waterbending')
+('Katara', 'waterbending');
