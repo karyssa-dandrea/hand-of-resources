@@ -14,3 +14,19 @@ avatar (name, abilities)
 VALUES
 ('Zuko', 'firebending'),
 ('Katara', 'waterbending');
+
+
+DROP TABLE IF EXISTS sushi;
+
+CREATE Table sushi (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    type TEXT NOT NULL,
+    raw TEXT NOT NULL
+
+);
+
+INSERT INTO
+sushi (type, raw)
+VALUES
+('Spicy Tuna', 'yes'),
+('Yellowtail', 'yes');
