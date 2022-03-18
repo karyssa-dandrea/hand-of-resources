@@ -36,4 +36,23 @@ describe('alchemy-app routes', () => {
 
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('updates shrek character by id', async () => {
+    const initial = {
+      id: expect.any(String),
+      name: 'Shrek',
+      type: 'ogre',
+    };
+    const shrekChar = await request(app).post('/api/v1/shrek').send(initial);
+    const expected = {
+      id: expect.any(String),
+      name: 'Shrek',
+      type: 'monster',
+    };
+    const res = await request(app)
+      .patch(`/api/v1/shrek/${shrekChar.body.id}`)
+      .send({ type: 'monster' });
+
+    expect(res.body).toEqual(expected);
+  });
 });
