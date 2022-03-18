@@ -55,4 +55,11 @@ describe('hand-of-resources routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+
+  it('deletes an avatar character by id', async () => {
+    const expected = await Avatar.findById(1);
+    const res = await request(app).delete(`/api/v1/avatar/${expected.id}`);
+
+    expect(res.body).toEqual(expected);
+  });
 });
