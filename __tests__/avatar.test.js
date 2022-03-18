@@ -36,4 +36,23 @@ describe('hand-of-resources routes', () => {
 
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('updates an avatar character by id', async () => {
+    const initial = {
+      id: expect.any(String),
+      name: 'Aang',
+      abilities: 'all',
+    };
+    const avatars = await request(app).post('/api/v1/avatar').send(initial);
+    const expected = {
+      id: expect.any(String),
+      name: 'Aang',
+      abilities: 'everything',
+    };
+    const res = await request(app)
+      .patch(`/api/v1/avatar/${avatars.body.id}`)
+      .send({ abilities: 'everything' });
+
+    expect(res.body).toEqual(expected);
+  });
 });
