@@ -30,3 +30,18 @@ sushi (type, raw)
 VALUES
 ('Spicy Tuna', 'yes'),
 ('Yellowtail', 'yes');
+
+DROP TABLE IF EXISTS shrek;
+
+CREATE TABLE shrek (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name TEXT NOT NULL,
+    type TEXT NOT NULL
+
+);
+
+INSERT INTO
+shrek (name, type)
+VALUES
+('Gingy', 'gingerbread'),
+('Shrek', 'ogre');
