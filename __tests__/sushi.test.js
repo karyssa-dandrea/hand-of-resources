@@ -36,4 +36,23 @@ describe('hand-of-resources routes', () => {
 
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('updates sushi by id', async () => {
+    const initial = {
+      id: expect.any(String),
+      type: 'Yellowtail',
+      raw: 'yes',
+    };
+    const sushi = await request(app).post('/api/v1/sushi').send(initial);
+    const expected = {
+      id: expect.any(String),
+      type: 'Yellowtail',
+      raw: 'no',
+    };
+    const res = await request(app)
+      .patch(`/api/v1/sushi/${sushi.body.id}`)
+      .send({ raw: 'no' });
+
+    expect(res.body).toEqual(expected);
+  });
 });
