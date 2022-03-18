@@ -17,10 +17,8 @@ describe('alchemy-app routes', () => {
       name: 'Fiona',
       type: 'ogre',
     };
-    const res = await (
-      await request(app).post('/api/v1/shrek')
-    ).setEncoding(expected);
+    const res = await request(app).post('/api/v1/shrek').send(expected);
 
-    expect(res.body).toEqual(expected);
+    expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
 });
