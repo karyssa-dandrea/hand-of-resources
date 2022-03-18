@@ -55,4 +55,11 @@ describe('hand-of-resources routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+
+  it('deletes sushi by id', async () => {
+    const expected = await Sushi.findById(1);
+    const res = await request(app).delete(`/api/v1/sushi/${expected.id}`);
+
+    expect(res.body).toEqual(expected);
+  });
 });
