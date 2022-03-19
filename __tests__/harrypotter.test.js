@@ -30,4 +30,11 @@ describe('hand-of-resources routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+
+  it('gets harry potter characters by id', async () => {
+    const expected = await HarryPotter.findById(1);
+    const res = await request(app).get(`/api/v1/harrypotter/${expected.id}`);
+
+    expect(res.body).toEqual({ ...expected });
+  });
 });
