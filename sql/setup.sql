@@ -59,3 +59,18 @@ sanrio (name, type)
 VALUES
 ('Kuromi', 'rabbit'),
 ('Keroppi', 'frog');
+
+DROP TABLE IF EXISTS harrypotter;
+
+CREATE TABLE harrypotter (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name TEXT NOT NULL,
+    type TEXT NOT NULL,
+    patronus TEXT NOT NULL
+);
+
+INSERT INTO
+harrypotter (name, type, patronus)
+VALUES
+('Hermione', 'halfblood', 'otter'),
+('Luna', 'pureblood', 'hare');
