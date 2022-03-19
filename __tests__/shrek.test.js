@@ -55,4 +55,11 @@ describe('alchemy-app routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+
+  it('deletes a shrek character by id', async () => {
+    const expected = await Shrek.findById(1);
+    const res = await request(app).delete(`/api/v1/shrek/${expected.id}`);
+
+    expect(res.body).toEqual(expected);
+  });
 });
