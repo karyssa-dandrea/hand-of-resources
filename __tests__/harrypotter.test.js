@@ -37,4 +37,27 @@ describe('hand-of-resources routes', () => {
 
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('updates character by id', async () => {
+    const initial = {
+      id: expect.any(String),
+      name: 'Hermione',
+      type: 'halfblood',
+      patronus: 'otter',
+    };
+    const characters = await request(app)
+      .post('/api/v1/harrypotter')
+      .send(initial);
+    const expected = {
+      id: expect.any(String),
+      name: 'Hermione',
+      type: 'muggleborn',
+      patronus: 'otter',
+    };
+    const res = await request(app)
+      .patch(`/api/v1/harrypotter/${characters.body.id}`)
+      .send({ type: 'muggleborn' });
+
+    expect(res.body).toEqual(expected);
+  });
 });
