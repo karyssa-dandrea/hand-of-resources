@@ -36,4 +36,23 @@ describe('hand-of-resources routes', () => {
 
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('updates character by id', async () => {
+    const initial = {
+      id: expect.any(String),
+      name: 'Kuromi',
+      type: 'rabbit',
+    };
+    const characters = await request(app).post('/api/v1/sanrio').send(initial);
+    const expected = {
+      id: expect.any(String),
+      name: 'Kuromi',
+      type: 'kitty',
+    };
+    const res = await request(app)
+      .patch(`/api/v1/sanrio/${characters.body.id}`)
+      .send({ type: 'kitty' });
+
+    expect(res.body).toEqual(expected);
+  });
 });
