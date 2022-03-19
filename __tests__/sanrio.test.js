@@ -55,4 +55,11 @@ describe('hand-of-resources routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+
+  it('deletes characters by id', async () => {
+    const expected = await Sanrio.findById(1);
+    const res = await request(app).delete(`/api/v1/sanrio/${expected.id}`);
+
+    expect(res.body).toEqual(expected);
+  });
 });
