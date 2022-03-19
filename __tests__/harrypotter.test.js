@@ -60,4 +60,11 @@ describe('hand-of-resources routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+
+  it('deletes character by id', async () => {
+    const expected = await HarryPotter.findById(1);
+    const res = await request(app).delete(`/api/v1/harrypotter/${expected.id}`);
+
+    expect(res.body).toEqual(expected);
+  });
 });
