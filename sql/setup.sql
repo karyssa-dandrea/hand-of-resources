@@ -45,3 +45,17 @@ shrek (name, type)
 VALUES
 ('Gingy', 'gingerbread'),
 ('Shrek', 'ogre');
+
+DROP TABLE IF EXISTS sanrio;
+
+CREATE TABLE sanrio (
+    id BIG INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name TEXT NOT NULL,
+    type TEXT NOT NULL
+);
+
+INSERT INTO
+sanrio (name, type)
+VALUES
+('Kuromi', 'rabbit'),
+('Keroppi', 'frog');
